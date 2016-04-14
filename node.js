@@ -113,3 +113,25 @@ app.post('/add', function (req, res) {
     }
     
 });
+
+app.post('/report', function (req, res) {
+    console.log('report function');
+
+    var rows = [];
+
+    if(req.body.table == undefined || req.body.id == undefined){
+
+        res.json('not added');
+
+    }else{
+
+        var queryString = "INSERT INTO report" +
+        " VALUES ('" + 
+        req.body.table + "', '" +    
+        req.body.id + "');";
+
+        var query = baseClient.query(queryString);
+        res.json('added');
+    }
+    
+});
